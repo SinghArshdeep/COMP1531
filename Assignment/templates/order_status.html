@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST">
+    Enter order ID:<input name = "id" type="text">
+        {% if messages %}{% for m in messages %}{{m}}{% endfor %}{% endif %} <br>
+    <input type="submit" value="submit"><br><br>
+</form>
+
+{% if id %}
+{{order.status_str()}}<br><br>A summary of your order can be found below.<br><br>
+<p style="white-space: pre;">{{order}}</p>
+{% endif %}
+
+
+{% endblock %}

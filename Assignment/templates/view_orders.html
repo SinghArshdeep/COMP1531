@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block body %}
+<form method="POST">
+
+{% for i in order_list %} <!-- where order_list is the list of current orders -->
+<div>
+  <br></br>
+
+  <p style="white-space: pre;">{{i}}</p>
+  <button type="submit" name="update_status" value="{{i.id}}">Update</button>
+  <br></br>
+</div>
+{% endfor %}
+
+</form>
+
+
+
+{% endblock %}

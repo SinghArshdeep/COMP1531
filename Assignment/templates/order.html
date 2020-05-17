@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+    
+    <head>
+        <title>Gourmet Burgers</title>
+        <h1 align='Center'><a href={{url_for('home')}}>Gourmet Burger</a></h1>
+    </head>
+    
+    <body>
+        <!-- tabs -->
+        <div class="topnav">
+            <form method="POST">
+            <input type="hidden" name="order" value = {{id}}></input>
+            <input type="hidden" name="form" value = "pageForm"></input>
+            <button type="submit" name="submit_button" value="creations">Add Creation</button>
+            <button type="submit" name="submit_button" value="sides">Add Sides</button>
+            <button type="submit" name="submit_button" value="drinks">Add Drinks</button>
+            <button type="submit" name="submit_button" value="checkout">Checkout</button>
+            </form>
+        </div>        
+        
+        {% if messages %}
+        {% for m in messages %}
+        <br><font color="green">{{m.replace('_', ' ')}}</font><br>
+        {% endfor %}
+        {% endif %}
+        
+        <!-- Main Body -->
+        {% block body %}{% endblock %}
+        
+    </body>
+</html>
+

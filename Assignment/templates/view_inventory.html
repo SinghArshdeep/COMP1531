@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!--Shows the inventory list-->
+<div>
+    <h1>Inventory List</h1>
+    <p style="white-space: pre;">{{ inventory }}</p>
+</div>
+
+<!--Redirects if the user wants to update the inventory-->
+<a href="{{url_for('update_inventory')}}">
+    <button type="button"> Update Inventory </button></a>
+
+{% endblock %}

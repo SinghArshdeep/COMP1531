@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+<h2 align='center'>Welcome!</h2>
+<h3 align='center'>Please select an option</h3>
+
+<p align='center'><a href="{{url_for('order')}}"><button type="button">Place an Order</button></a>
+<a href="{{url_for('status')}}"><button type="button">Check Order Status</button></a></p>
+
+{% endblock %}

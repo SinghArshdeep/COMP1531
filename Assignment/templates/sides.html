@@ -1,0 +1,33 @@
+{% extends 'order.html' %}
+{% block body %}
+
+<p align="center">
+<form method="POST">
+    <input type = "hidden" name = "order" value = {{ id }}></input>
+    <input type = "hidden" name = "form" value = "add_sides">
+        
+    <b>Please select your sides</b>
+
+    <table>
+
+      <tr>
+        <th>Sides</th>
+        <th>Cost</th>
+      </tr>
+      {% for i in items %}
+      <tr>
+          <td>{{ i.name.replace('_', ' ') }}</td>
+          <td align = "right">${{ i.price }}</td>
+          
+          <td><input name = {{ i.name }} type = "text" {% if form and form[i.name] %}value={{form[i.name]}}{% endif %}></td>
+          
+          <td><font color = "red">{% if errors and errors[i.name] != '' %}{{errors[i.name]}}{% endif %}</font></td>
+          
+      {% endfor %}
+  </table>
+  <button type = "submit" name = "submit_button" value = "add_sides">Add to order</button>
+  
+</form>
+</p>
+
+{% endblock %}

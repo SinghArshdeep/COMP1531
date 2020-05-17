@@ -1,0 +1,63 @@
+{% extends 'order.html' %}
+{% block body %}
+<p align="center">
+<form method="POST">
+    <input type="hidden" name = "order" value = {{id}}></input>
+   
+    {% if custom %} <!-- add ingredients to a custom creation -->
+    <b>You have chosen to create your own gourmet creation. Please select ingredients from the list below.</b></br>
+    <input type="hidden" name="form" value="custom_creation"><br>
+    <select name="type" placeholder="Select type">
+        <option value="Wrap">Wrap</option>
+        <option value="Burger">Burger</option>
+    </select>
+    <table>
+        <tr>
+            <th>Ingredient</th>
+            <th>Cost per unit</th>
+            <th>Enter Amount</th>
+            <th></th>
+        </tr>
+    
+        {% for i in items %}
+        <tr>
+            <td>{{i.name.replace('_', ' ')}}</td>
+            <td align="right">${{i.price}}</td>
+            <td><input name={{i.name}} type="number" {% if form and form[i.name] %}value={{form[i.name]}}{% endif %}></td>
+            <td><font color="red">{% if errors and errors[i.name] != '' %}{{errors[i.name]}}{% endif %}</font></td>
+        {% endfor %}
+    </table>
+    <button type="submit" name="submit_button" value="add_creation">Add to order</button>
+    
+    {% elif standard %} <!-- add standard creations to order -->
+    <input type="hidden" name="form" value="standard_creation">
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Cost</th>
+            <th>Ingredients</th>
+            <th>    </th>
+        </tr>
+        {% for i in items %}
+        <tr>
+            <td>{{i.name.replace('_', ' ')}}</td>
+            <td>${{i.cost()}}</td>
+            <td><p style="white-space: pre;">{{i.contains().replace('_', ' ')}}</p><td>
+            <td><input name={{i.name}} type="submit" value="Add to order"></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    
+    {% else %} <!-- choose between custom or standard -->
+    <input type="hidden" name="form" value="creation_type">
+    <button type="submit" name="submit_button" value="custom">Add Custom Creation</button>
+    <button type="submit" name="submit_button" value="standard">Add Standard Creation</button>
+    {% endif %}
+
+</form>
+</p>
+
+
+
+{% endblock %}

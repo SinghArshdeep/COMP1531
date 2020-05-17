@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1>Confirm Order</h1>
+
+<p>Your order is listed below. To confirm your order select a payment method, or select the cancel button to discontinue your order.<br>
+
+<p style="white-space: pre;">{{order.__str__().replace('_', ' ')}}</p>
+
+<form method="POST">
+    <select name="Payment Method" placeholder="Please select a payment option">
+        <option value="Cash">Cash</option>
+        <option value="Card">Card</option>
+    </select><br><br>
+    <input  type="hidden"   name="form"             value="confirmation">
+    <input  type="hidden"   name="order"            value={{order.id}}>
+    <button type="submit"   name="submit_button"    value="confirm">Confirm Order</button>
+    <button type="submit"   name="submit_button"    value="cancel">Cancel Order</button>
+</form>
+
+{% endblock %}

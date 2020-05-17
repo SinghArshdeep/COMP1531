@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1> Order Confirmation </h1>
+
+<p>Thank you for ordering with Gourmet Burgers. Your ID is {{pass_id}}.<br><br>
+You can check the status of your order <a href='{{url_for('status')}}'>here</a>.
+</p>
+
+{% endblock %}

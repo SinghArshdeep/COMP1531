@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<!--Prints an error message at the top if any of the field is wrong-->
+{% if messages %}
+{% for m in messages %}
+    <br><font color = "red">{{ m }}</font><br>
+{% endfor %}
+{% endif %}
+
+<!--Form for taking inputs from the user-->
+<form method="POST">
+    
+    <!--Table for updating the ingredients-->
+
+    <u><h2><b>Update the Ingredients</b></h2></u>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Enter Amount</th>
+            <th></th>
+        </tr>
+        
+        {% for i in inventory.ingredients %}
+        <tr>
+            <td>{{ i.name.replace('_', ' ') }}</td>
+            
+            <td><input name = {{ i.name }} type = "number" {% if form and form[i.name] %}value={{form[i.name]}}{% endif %} ></td>
+            
+            <!--Errors are displayed for the particular field-->
+
+            <td><font color="red">{% if errors and errors[i.name] != '' %}{{errors[i.name]}}{% endif %}</font></td>
+            
+         </tr>
+        
+        {% endfor %}
+        
+    </table>
+
+    <!--    Table for updating the sides-->
+
+    <u><h2><b>Update the Sides</b></h2></u>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Enter Amount</th>
+        </tr>
+        
+        {% for i in inventory.sides %}
+        <tr>
+            <td>{{ i.name.replace('_', ' ') }}</td>
+            
+            <td><input name = {{ i.name }} type = "number" {% if form and form[i.name] %}value={{form[i.name]}}{% endif %} ></td>
+            
+            <!--Errors are displayed for the particular field-->
+
+            <td><font color="red">{% if errors and errors[i.name] != '' %}{{errors[i.name]}}{% endif %}</font></td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+    
+    <!--    Table for updating the drinks-->
+
+    <u><h2><b>Update the Drinks</b></h2></u>
+    <table>
+        <tr>
+            <th>Ingredient</th>
+            <th>Enter Amount</th>
+        </tr>
+        
+        {% for i in inventory.drinks %}
+        <tr>
+            <td>{{ i.name.replace('_', ' ') }}</td>
+            
+            <td><input name = {{ i.name }} type = "number" {% if form and form[i.name] %}value={{form[i.name]}}{% endif %} ></td>
+            
+            <!--Errors are displayed for the particular field-->
+
+            <td><font color="red">{% if errors and errors[i.name] != '' %}{{errors[i.name]}}{% endif %}</font></td>
+            
+        </tr>
+        {% endfor %}
+        
+    </table>
+    
+<!--    Button to submit the user form-->
+    <div>
+        <button type="submit" name="submit" ><h3>SUBMIT</h3></button>
+    </div>
+    
+</form>
+
+
+
+{% endblock %}

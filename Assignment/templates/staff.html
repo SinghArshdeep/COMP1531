@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block body %}
+<p align="center">
+Welcome to the staff page for Gourmet Creations<br>
+<a href="{{url_for('inventory')}}"><button>Check Inventory</button></a>
+<a href="{{url_for('curr_orders')}}"><button>Check Orders</button></a><br>
+</p>
+{% endblock %}

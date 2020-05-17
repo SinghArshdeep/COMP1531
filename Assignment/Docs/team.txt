@@ -1,0 +1,4 @@
+Team name:	Game of Git
+Team members:	Skye Williams-Kelly z5162479
+		Masum Khan z5218595
+		Arshdeep Singh Bhogal z5225346
