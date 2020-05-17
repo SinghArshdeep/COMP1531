@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block body %}
+<img src="https://easydrawingguides-7512.kxcdn.com/wp-content/uploads/2017/01/How-to-Draw-a-cartoon-car-20.png" width="100px" height="100px"/>
+
+<br/>
+
+<div>
+  <h2>{{car}}</h2>
+</div>
+
+
+<!--
+Here are some HTML tags you might find useful:
+
+  Form:               <form method="POST"></form>
+  Input field:        <input name="field_name" value="placeholder string"/>
+  Readonly field:     ??? (figure it out yourself)
+
+  Section:            <div></div>
+  Newline:            <br>
+  Red text:           <font size="3" color="red">ERROR MESSAGE</font> 
+  Submit button:      <button name="button_name" type="submit">Say Hi!</button>
+-->
+
+<!--
+{% raw %} This tag is to prevent Jinja from converting any of the Jinja templates below
+
+Here are some Jinja templates you might find useful:
+
+  1. Printing a variable:                       {{variable}}
+  2. If statement to check if variable exists:  {% if var %} ... {% endif %}
+  3. If statement with multiple conditions:     {% if var and var.name == 'Isaac' %}
+  4. If-Else statement:                         ???
+  5. For loop:                                  {% for booking in bookings %} ... {% endfor %}
+  6. Advanced features that may be useful for cleaner Jinja templating: 
+        {% macro %}, {% block %}, more at http://jinja.pocoo.org/docs/2.10/templates/
+
+{% endraw %}
+-->
+
+<div>
+    <form method="POST">
+        <input name = "customer_name" value = "{{ values['name'] }}" />Customer Name <br>
+        {% if error['name'] != '' %}
+        <font size="3" color="red">{{ error['name'] }}</font> <br>
+        {% endif %}
+        
+        <input name = "customer_licence" value = "{{ values['licence'] }}" />Customer License <br>
+        {% if error['licence'] != '' %}
+        <font size="3" color="red">{{ error['licence'] }}</font> <br>
+        {% endif %}
+        
+        <input name = "start_location" value = "{{ values['loc1'] }}" />Start Location <br>
+        {% if error['loc1'] != '' %}
+        <font size="3" color="red">{{ error['loc1'] }}</font> <br>
+        {% endif %}
+        
+        <input name = "end_location" value = "{{ values['loc2'] }}" />End Location <br>
+        {% if error['loc2'] != '' %}
+        <font size="3" color="red">{{ error['loc2'] }}</font> <br>
+        {% endif %}
+        
+        <input placeholder = "YYYY-MM-DD" name = "start_date" value = "{{ values['date1'] }}" />Start Date <br>
+        {% if error['date1'] != '' %}
+        <font size="3" color="red">{{ error['date1'] }}</font> <br>
+        {% endif %}
+        
+        <input placeholder = "YYYY-MM-DD" name = "end_date" value = "{{ values['date2'] }}" />End Date <br>
+        {% if error['date2'] != '' %}
+        <font size="3" color="red">{{ error['date2'] }}</font> <br>
+        {% elif error['period'] != '' %}
+        <font size="3" color="red">{{ error['period'] }}</font> <br>
+        {% endif %}
+        
+        {% if values['fee'] != ''%}
+        <div>
+            <p>Total fee: ${{ values['fee'] }}</p>
+            <button type="submit" name="confirm">Confirm</button>
+            <button type="submit">Cancel</button>
+        </div>
+        {% else %}
+        <div>
+            <button type="submit" name="check">Check Booking</button>
+        </div>
+        {% endif %}
+        
+        </form>
+<!-- 
+  Complete this section
+-->
+</div>
+{% endblock %}

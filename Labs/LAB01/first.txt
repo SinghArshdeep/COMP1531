@@ -1,0 +1,6 @@
+#this is a new file 
+#Now edited in the hub
+#Being edited in the FirstBranch
+#Add a diff line
+#Waiting for a new conflict 
+
